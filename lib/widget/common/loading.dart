@@ -14,6 +14,7 @@ class Loading {
       try {
         await fun();
       } on UserAuthFailException {
+        /// todo 没有自动登录
         await Navigator.of(context).pushNamed(PageNameConstant.LoginPageName);
       } finally {
         end(context);
