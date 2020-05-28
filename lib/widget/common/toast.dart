@@ -86,4 +86,27 @@ class Toast {
           );
         });
   }
+
+  static Future<dynamic> infoDialog(
+      {@required String msg, BuildContext context}) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(
+              '信息',
+              style: TextStyle(color: AppBaseColor.green5),
+            ),
+            content: Text(msg),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('确认'),
+                onPressed: () {
+                  Navigator.of(context).pop(true);
+                },
+              ),
+            ],
+          );
+        });
+  }
 }

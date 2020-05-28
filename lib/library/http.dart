@@ -46,7 +46,7 @@ class HttpService {
             new Map<String, dynamic>.from(e.response.data)["message"]);
       } else {
         Log.print("request error: " + e.message);
-        throw new BaseRequestException("网络错误");
+        throw new BaseRequestException("网络错误: " + e.message);
       }
     }
   }
