@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/constant/color.dart';
 import 'package:flutter_base/library/screen.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SelectDialog extends StatefulWidget {
   final List data;
@@ -36,7 +35,7 @@ class SelectDialog extends StatefulWidget {
 class _SelectState extends State<SelectDialog> {
   @override
   Widget build(BuildContext context) {
-    ScreenAdapt.init(context);
+    var sa = ScreenAdapt(context);
     List selects0 = this.widget.selects;
     if (selects0 == null) selects0 = [];
     return AlertDialog(
@@ -46,14 +45,14 @@ class _SelectState extends State<SelectDialog> {
             child: new Text("确定")) : null,
       ],
       content: Container(
-        height: ScreenUtil().setHeight(this.widget.height),
+        height: sa.height(this.widget.height),
         child: Column(
           children: <Widget>[
 
             /// dialog中使用listview需要在container中确定宽高
             Container(
-              width: ScreenUtil().setWidth(650),
-              height: ScreenUtil().setHeight(this.widget.height),
+              width: sa.width(650),
+              height: sa.height(this.widget.height),
               alignment: Alignment.center,
               child: ListView.builder(
                 padding: EdgeInsets.only(top: 10, bottom: 10),

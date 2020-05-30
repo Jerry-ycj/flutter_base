@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base/library/http.dart';
 import 'package:flutter_base/library/log.dart';
 
+/// base 的初始化
 class FlutterBase {
   static init({@required String serverUrl}) {
     Log.print("base core init");
