@@ -9,9 +9,10 @@ class SelectDialog extends StatefulWidget {
   final dynamic valueId;
   final String idKey;
   final String nameKey;
+  final Function nameWidgetFunc;
 
   /// screen的计算值-screenUtil
-  final int height;
+  final num height;
 
   /// 多选
   final bool multiple;
@@ -23,6 +24,8 @@ class SelectDialog extends StatefulWidget {
     Key key, this.data, this.valueId,
     this.idKey = "id",
     this.nameKey = "name",
+    // 生成nameWidget的函数, 不用nameKey
+    this.nameWidgetFunc,
     this.height = 700,
     this.multiple = false,
     this.selects,
@@ -65,10 +68,11 @@ class _SelectState extends State<SelectDialog> {
                             this.widget.data[index]["id"],
                             orElse: () => null) != null;
                   }
-                  else
+                  else {
                     highlight = this.widget.valueId != null &&
                         this.widget.valueId ==
                             this.widget.data[index][this.widget.idKey];
+                  }
                   return FlatButton(
                     onPressed: () {
                       if (this.widget.multiple) {
@@ -88,14 +92,13 @@ class _SelectState extends State<SelectDialog> {
                         Navigator.of(context).pop(this.widget.data[index]);
                       }
                     },
-                    child: Text(this.widget.data[index][this.widget.nameKey]),
+                    child: this.widget.nameWidgetFunc != null ? this.widget
+                        .nameWidgetFunc(this.widget.data[index]) : Text(
+                        this.widget.data[index][this.widget.nameKey]),
                     color: highlight ? AppBaseColor.blue1 : null,
                     textColor: highlight ? AppBaseColor.blue6 : null,
                   );
                 },
-//                      separatorBuilder: (BuildContext context, int index) {
-//                        return Divider();
-//                      },
                 shrinkWrap: true,
                 itemCount: this.widget.data.length,
                 physics: BouncingScrollPhysics(),
