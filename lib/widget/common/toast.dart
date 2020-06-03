@@ -65,7 +65,7 @@ class Toast {
   /// dialog方式
   /// 注意：请勿在loading中使用，pop会影响，异常处理在loading外层。
   static Future<dynamic> errorDialog(
-      {@required String msg, BuildContext context}) {
+      {@required String msg, @required BuildContext context}) {
     return showDialog(
         context: context,
         builder: (context) {
@@ -88,7 +88,7 @@ class Toast {
   }
 
   static Future<dynamic> infoDialog(
-      {@required String msg, BuildContext context}) {
+      {@required String msg, @required BuildContext context}) {
     return showDialog(
         context: context,
         builder: (context) {

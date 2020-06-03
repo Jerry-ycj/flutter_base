@@ -9,6 +9,7 @@ flutter app base services and widgets
 /// 在main的build中需要先初始化本库需要的服务端信息
 FlutterBase.init(serverUrl: AppConfig.serverUrl);
 ```
+
 ## provider
 ```dart
 void main() => runApp(

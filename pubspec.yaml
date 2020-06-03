@@ -18,6 +18,8 @@ dependencies:
   fluttertoast: ^4.0.1
   flutter_spinkit: ^4.1.2+1
   flutter_screenutil: ^1.1.0
+  url_launcher: ^5.4.10
+#  permission_handler: ^5.0.0+hotfix.8
 
 dev_dependencies:
   flutter_test:
