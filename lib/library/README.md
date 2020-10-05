@@ -1,3 +1,4 @@
+# library
 
 ## http
 应用于项目的dao中。
@@ -19,3 +20,5 @@ try {
 ## screen
 屏幕宽高通用的尺寸设置。
 依赖：flutter_screenutil
+
+https://github.com/OpenFlutter/flutter_screenutil/blob/master/README_CN.md
