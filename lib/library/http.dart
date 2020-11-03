@@ -33,7 +33,7 @@ class HttpService {
       } else {
         response = await _dio.post(url);
       }
-      Map ret = new Map<String, dynamic>.from(response.data)["data"];
+      var ret = new Map<String, dynamic>.from(response.data)["data"];
       if (ret == null) ret = new Map();
       return ret;
     } on DioError catch (e) {
