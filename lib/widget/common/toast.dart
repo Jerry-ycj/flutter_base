@@ -6,7 +6,7 @@ class Toast {
   /// 并且 注意在Scaffold body中 builder wrap the context
   static infoSnack({@required String msg, BuildContext context}) {
     if (msg == null) return;
-    Scaffold.of(context).showSnackBar(SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Row(
         children: <Widget>[
           Icon(
@@ -32,7 +32,7 @@ class Toast {
   /// 并且 注意在Scaffold body中 builder wrap the context
   static errorSnack({@required String msg, BuildContext context}) {
     if (msg == null) return;
-    Scaffold.of(context).showSnackBar(SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       backgroundColor: AppBaseColor.red5,
       content: Row(
         children: <Widget>[
@@ -76,7 +76,7 @@ class Toast {
             ),
             content: Text(msg),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                 child: Text('确认'),
                 onPressed: () {
                   Navigator.of(context).pop(true);
@@ -99,7 +99,7 @@ class Toast {
             ),
             content: Text(msg),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                 child: Text('确认'),
                 onPressed: () {
                   Navigator.of(context).pop(true);

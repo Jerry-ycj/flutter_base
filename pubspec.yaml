@@ -10,15 +10,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  shared_preferences: ^0.5.12
-  dio: ^3.0.10
-  dio_cookie_manager: ^1.0.0
-  cookie_jar: ^1.0.1
-  package_info: ^0.4.3
-  fluttertoast: ^7.1.1
-  flutter_spinkit: ^4.1.2+1
-  flutter_screenutil: ^3.1.1
-  url_launcher: ^5.7.2
+  shared_preferences: ^2.0.5
+  dio: ^4.0.0
+  dio_cookie_manager: ^2.0.0
+  cookie_jar: ^3.0.1
+  package_info: ^2.0.0
+  fluttertoast: ^8.0.3
+  flutter_spinkit: ^5.0.0
+  flutter_screenutil: ^4.0.4+1
+  url_launcher: ^6.0.3
 #  permission_handler: ^5.0.0+hotfix.8
 
 dev_dependencies:

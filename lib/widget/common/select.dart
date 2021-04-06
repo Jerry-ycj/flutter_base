@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base/constant/color.dart';
 import 'package:flutter_base/library/array.dart';
 import 'package:flutter_base/library/screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SelectDialog extends StatefulWidget {
   final List data;
@@ -50,7 +51,6 @@ class _SelectState extends State<SelectDialog> {
 
   @override
   Widget build(BuildContext context) {
-    var sa = ScreenAdapt(context);
     List selects0 = this.widget.selects;
     if (selects0 == null) selects0 = [];
     List<Widget> children = [];
@@ -77,7 +77,7 @@ class _SelectState extends State<SelectDialog> {
 
     /// dialog中使用list_view 需要在container中确定宽高
     children.add(Expanded(child: Container(
-      width: sa.width(650),
+      width: ScreenUtil().setWidth(650),
 //      height: sa.height(this.widget.height),
       alignment: Alignment.center,
       child: ListView.builder(
@@ -86,9 +86,8 @@ class _SelectState extends State<SelectDialog> {
           /// 选中高亮
           bool highlight;
           if (this.widget.multiple) {
-            highlight =
-                selects0.firstWhere((element) =>
-                element["id"] ==
+            highlight = selects0.firstWhere(
+                    (element) => element["id"] ==
                     filteredData[index]["id"],
                     orElse: () => null) != null;
           }
@@ -134,7 +133,7 @@ class _SelectState extends State<SelectDialog> {
             child: new Text("确定")) : null,
       ],
       content: Container(
-        height: sa.height(this.widget.height),
+        height: ScreenUtil().setHeight(this.widget.height),
         child: Column(
           children: children,
         ),

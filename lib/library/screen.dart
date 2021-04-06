@@ -1,15 +1,24 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+/**
+ * 采用以下方式
+ * return ScreenUtilInit(
+    designSize: Size(360, 690),
+    allowFontScaling: false,
+    builder: () => MaterialApp(
+    debugShowCheckedModeBanner: false,
+    title: 'Flutter_ScreenUtil',
+    theme: ThemeData(
+    primarySwatch: Colors.blue,
+    ),
+    home: HomePage(title: 'FlutterScreenUtil Demo'),
+    ),
+    );
+ */
 
 class ScreenAdapt {
   double _width = 750;
   double _height = 1334;
-
-  ScreenAdapt(BuildContext context) {
-    /// 屏幕适配初始, 每个需要适配的页面都需要init
-    ScreenUtil.init(context,
-        designSize: Size(_width, _height), allowFontScaling: false);
-  }
 
   num height(num height) {
     return ScreenUtil().setHeight(height);

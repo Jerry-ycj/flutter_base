@@ -9,6 +9,7 @@ class UserStore with ChangeNotifier {
   bool _autoLogin;
   String _pwd;
   String _username;
+  String _schema;
   DateTime _dt;
 
   init() async {
@@ -19,12 +20,13 @@ class UserStore with ChangeNotifier {
     _token = await LocalStorage.get("token");
     _username = await LocalStorage.get("username");
     _pwd = await LocalStorage.get("pwd");
+    _schema = await LocalStorage.get("schema");
     _autoLogin = await LocalStorage.get("autoLogin") ?? false;
     int dt0 = await LocalStorage.get("dt");
     _dt = dt0 == null ? null : new DateTime.fromMillisecondsSinceEpoch(dt0);
   }
 
-  save({Map u, String t, bool al, String username, String pwd}) {
+  save({Map u, String t, bool al, String username, String pwd, String schema}) {
     if (u != null) {
       _user = u;
       LocalStorage.setString("user", jsonEncode(_user));
@@ -40,6 +42,10 @@ class UserStore with ChangeNotifier {
     if (pwd != null) {
       _pwd = pwd;
       LocalStorage.setString("pwd", _pwd);
+    }
+    if (schema != null) {
+      _schema = schema;
+      LocalStorage.setString("schema", _schema);
     }
     if (al != null) {
       _autoLogin = al;
