@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/constant/color.dart';
 import 'package:flutter_base/library/array.dart';
-import 'package:flutter_base/library/screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SelectDialog extends StatefulWidget {
@@ -39,7 +38,8 @@ class SelectDialog extends StatefulWidget {
       this.selects,
       this.filterable = false,
       // eg: (text){ return (element){ text } }
-      this.filterFun}) :super(key: key);
+      this.filterFun})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _SelectState();
@@ -87,27 +87,28 @@ class _SelectState extends State<SelectDialog> {
           bool highlight;
           if (this.widget.multiple) {
             highlight = selects0.firstWhere(
-                    (element) => element["id"] ==
-                    filteredData[index]["id"],
-                    orElse: () => null) != null;
-          }
-          else {
+                    (element) => element["id"] == filteredData[index]["id"],
+                    orElse: () => null) !=
+                null;
+          } else {
             highlight = this.widget.valueId != null &&
                 this.widget.valueId ==
                     filteredData[index][this.widget.idKey];
           }
-          return FlatButton(
+          return TextButton(
             onPressed: () {
               if (this.widget.multiple) {
                 if ((selects0.isEmpty ||
-                    selects0.firstWhere((element) =>
-                    element["id"] == filteredData[index]["id"],
-                        orElse: () => null) == null))
+                    selects0.firstWhere(
+                            (element) =>
+                                element["id"] == filteredData[index]["id"],
+                            orElse: () => null) ==
+                        null))
                   selects0.add(filteredData[index]);
                 else {
                   // 点下删除
-                  selects0.removeWhere((element) =>
-                  element["id"] == filteredData[index]["id"]);
+                  selects0.removeWhere(
+                      (element) => element["id"] == filteredData[index]["id"]);
                 }
                 // 刷新
                 setState(() {});
@@ -115,11 +116,17 @@ class _SelectState extends State<SelectDialog> {
                 Navigator.of(context).pop(filteredData[index]);
               }
             },
-            child: this.widget.nameWidgetFunc != null ? this.widget
-                .nameWidgetFunc(filteredData[index]) : Text(
-                filteredData[index][this.widget.nameKey]),
-            color: highlight ? AppBaseColor.blue1 : null,
-            textColor: highlight ? AppBaseColor.blue6 : null,
+            child: this.widget.nameWidgetFunc != null
+                ? this.widget.nameWidgetFunc(filteredData[index])
+                : Text(filteredData[index][this.widget.nameKey]),
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.resolveWith((states) {
+                return highlight ? AppBaseColor.blue1 : null;
+              }),
+              foregroundColor: MaterialStateProperty.resolveWith((states) {
+                return highlight ? AppBaseColor.blue6 : null;
+              }),
+            ),
           );
         },
         shrinkWrap: true,
@@ -128,9 +135,11 @@ class _SelectState extends State<SelectDialog> {
       ),)));
     return AlertDialog(
       actions: <Widget>[
-        this.widget.multiple ? new FlatButton(
-            onPressed: () => Navigator.of(context).pop(selects0),
-            child: new Text("确定")) : null,
+        this.widget.multiple
+            ? new TextButton(
+                onPressed: () => Navigator.of(context).pop(selects0),
+                child: new Text("确定"))
+            : new Container(),
       ],
       content: Container(
         height: ScreenUtil().setHeight(this.widget.height),
