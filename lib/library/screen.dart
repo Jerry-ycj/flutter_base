@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /**
@@ -17,24 +19,28 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
  */
 
 class ScreenAdapt {
-  double _width = 750;
-  double _height = 1334;
+  static double widthVal = 750;
+  static double heightVal = 1334;
 
-  num height(num height) {
+  static Size size() {
+    return Size(widthVal, heightVal);
+  }
+
+  static num height(num height) {
     return ScreenUtil().setHeight(height);
   }
 
-  num width(num width) {
+  static num width(num width) {
     return ScreenUtil().setWidth(width);
   }
 
   // percent
-  num heightP(double percent) {
-    return ScreenUtil().setHeight(_height * percent / 100);
+  static num heightP(double percent) {
+    return ScreenUtil().setHeight(heightVal * percent / 100);
   }
 
   // percent
-  num widthP(double percent) {
-    return ScreenUtil().setWidth(_width * percent / 100);
+  static num widthP(double percent) {
+    return ScreenUtil().setWidth(widthVal * percent / 100);
   }
 }
